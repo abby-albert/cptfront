@@ -16,7 +16,16 @@
 
         <button type="submit">Sign Up</button>
     </form>
-
+    <form id="signup-form">
+        <label for="username">Username:</label>
+        <input type="text" id="username" required><br><br>
+    
+        <label for="password">Password:</label>
+        <input type="password" id="password" required><br><br>
+    
+        <button type="submit">Sign Up</button>
+    </form>
+    
     <div id="message"></div>
     <script>
         document.getElementById("signup-form").addEventListener("submit", function(event) {
@@ -25,15 +34,15 @@
             // Get form data
             const username = document.getElementById("username").value;
             const password = document.getElementById("password").value;
-
+    
             // Create data object
             const data = {
-                uid: username,
+                username: username,
                 password: password
             };
-
+    
             // Send POST request to backend
-            fetch("/api/users", {
+            fetch("/api/users/signup", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -54,4 +63,4 @@
             });
         });
     </script>
-</body>
+  
