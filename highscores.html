@@ -95,52 +95,99 @@
         </div>
     </div>
 </div>
-<script>
-    document.getElementById("save-button").addEventListener("click", function () {
-        const name = document.getElementById("name").value;
-        const game = document.getElementById("game").value;
-        const score = document.getElementById("score").value;
-        const currentDate = new Date().toLocaleDateString();
-        if (name !== "" && game !== "" && score !== "") {
-            const entry = {
-                name: name,
-                game: game,
-                score: score,
-            };
-            fetch("/save_high_score", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(entry)
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert(data.message);
-                displayHighScores();
-            })
-            .catch(error => console.error("Error:", error));
-        } else {
-            alert("Please fill in all fields.");
-        }
-    });
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>High Scores</title>
+    <style>
+        /* Add your CSS styles here */
+        /* CSS styles remain unchanged */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>High Scores</h1>
+        <table id="high-scores-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Game</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody id="high-scores-body">
+                <!-- High scores will be dynamically added here -->
+            </tbody>
+        </table>
+        <h2>Add New High Score</h2>
+        <input type="text" id="name" placeholder="Name" required>
+        <input type="text" id="game" placeholder="Game" required>
+        <input type="number" id="score" placeholder="Score" required>
+        <button id="save-button">Save</button>
+    </div>
 
-    function displayHighScores() {
-        fetch("/get_high_scores")
-        .then(response => response.json())
-        .then(data => {
-            const tableBody = document.getElementById("log-body");
+    <script>
+        // Function to fetch high scores from the backend
+        async function fetchHighScores() {
+            try {
+                const response = await fetch('http://your-backend-url/api/highscores');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch high scores');
+                }
+                const data = await response.json();
+                displayHighScores(data);
+            } catch (error) {
+                console.error(error);
+            }
+        }
+
+        // Function to display high scores
+        function displayHighScores(scores) {
+            const tableBody = document.getElementById("high-scores-body");
             tableBody.innerHTML = ""; // Clear previous entries
-            data.forEach(entry => {
+            scores.forEach(score => {
                 const row = tableBody.insertRow();
-                row.insertCell().textContent = entry.name;
-                row.insertCell().textContent = entry.game;
-                row.insertCell().textContent = entry.score;
+                row.insertCell().textContent = score.name;
+                row.insertCell().textContent = score.game;
+                row.insertCell().textContent = score.score;
             });
-        })
-        .catch(error => console.error("Error:", error));
-    }
-    displayHighScores();
-</script>
+        }
+
+        // Function to save new high score to the backend
+        document.getElementById("save-button").addEventListener("click", async function() {
+            const name = document.getElementById("name").value;
+            const game = document.getElementById("game").value;
+            const score = parseInt(document.getElementById("score").value);
+            if (name && game && !isNaN(score)) {
+                try {
+                    const response = await fetch('http://your-backend-url/api/highscores', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ name, game, score })
+                    });
+                    if (!response.ok) {
+                        throw new Error('Failed to save high score');
+                    }
+                    // Fetch updated high scores after adding new score
+                    fetchHighScores();
+                    // Clear input fields
+                    document.getElementById("name").value = "";
+                    document.getElementById("game").value = "";
+                    document.getElementById("score").value = "";
+                } catch (error) {
+                    console.error(error);
+                }
+            } else {
+                alert("Please fill in all fields with valid values.");
+            }
+        });
+
+        // Initial fetch of high scores when the page loads
+        fetchHighScores();
+    </script>
 </body>
 </html>
