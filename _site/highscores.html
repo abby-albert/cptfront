@@ -95,39 +95,6 @@
         </div>
     </div>
 </div>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>High Scores</title>
-    <style>
-        /* Add your CSS styles here */
-        /* CSS styles remain unchanged */
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>High Scores</h1>
-        <table id="high-scores-table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Game</th>
-                    <th>Score</th>
-                </tr>
-            </thead>
-            <tbody id="high-scores-body">
-                <!-- High scores will be dynamically added here -->
-            </tbody>
-        </table>
-        <h2>Add New High Score</h2>
-        <input type="text" id="name" placeholder="Name" required>
-        <input type="text" id="game" placeholder="Game" required>
-        <input type="number" id="score" placeholder="Score" required>
-        <button id="save-button">Save</button>
-    </div>
-
     <script>
         // Function to fetch high scores from the backend
         async function fetchHighScores() {
