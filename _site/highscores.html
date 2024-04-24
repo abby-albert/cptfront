@@ -132,7 +132,7 @@
         // Function to fetch high scores from the backend
         async function fetchHighScores() {
             try {
-                const response = await fetch('http://your-backend-url/api/highscores');
+                const response = await fetch('http://127.0.0.1:8086/api/highscores');
                 if (!response.ok) {
                     throw new Error('Failed to fetch high scores');
                 }
@@ -162,7 +162,7 @@
             const score = parseInt(document.getElementById("score").value);
             if (name && game && !isNaN(score)) {
                 try {
-                    const response = await fetch('http://your-backend-url/api/highscores', {
+                    const response = await fetch('http://127.0.0.1:8086/api/highscores', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
