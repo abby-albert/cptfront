@@ -8,8 +8,8 @@
 <body>
     <h1>User Signup</h1>
     <form id="signup-form">
-        <label for="username">Username:</label>
-        <input type="text" id="username" required><br><br>
+        <label for="uid">Username:</label>
+        <input type="text" id="uid" required><br><br>
 
         <label for="password">Password:</label>
         <input type="password" id="password" required><br><br>
@@ -23,12 +23,12 @@
             event.preventDefault(); // Prevent default form submission
             
             // Get form data
-            const username = document.getElementById("username").value;
+            const username = document.getElementById("uid").value;
             const password = document.getElementById("password").value;
     
             // Create data object
             const data = {
-                username: username,
+                uid: uid,
                 password: password
             };
     
