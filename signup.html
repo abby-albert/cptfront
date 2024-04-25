@@ -8,7 +8,7 @@
 <body>
     <h1>User Signup</h1>
     <form id="signup-form">
-        <label for="uid">Username:</label>
+        <label for="uid">uid:</label>
         <input type="text" id="uid" required><br><br>
 
         <label for="password">Password:</label>
@@ -33,7 +33,7 @@
             };
     
             // Send POST request to backend
-            fetch("/api/users", {
+            fetch("http://127.0.0.1:8086/api/users", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
