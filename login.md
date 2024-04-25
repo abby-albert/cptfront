@@ -1,4 +1,26 @@
-<head>   
+
+  </script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Include the compiled CSS file -->
+</head>
+
+<body>
+  <!-- Your HTML login form -->
+  <div id="errorMessage"></div>
+  <form action="javascript:login_user()">
+    <p><label for="uid">User ID:</label>
+      <input type="text" name="uid" id="uid" required>
+    </p>
+    <p><label for="password">Password:</label>
+      <input type="password" name="password" id="password" required>
+    </p>
+    <p>
+     <button class="button-spacing">Log In</button>
+          <button onClick = "window.location.href ='http://127.0.0.1:4100/student/2024/02/06/signup.html'" class="button-spacing" >Sign Up</button>
+   </p>
+  </form>
 function login_user() {
       const enteredUid = document.getElementById("uid").value;
       const enteredPassword = document.getElementById("password").value;
@@ -39,7 +61,7 @@ function login_user() {
           .then(response => {
             if (response.ok) {
                 console.log("User logged in successfully");
-                window.location.href = "http://127.0.0.1:4100/student/2024/01/31/game.html"
+                window.location.href = "http://127.0.0.1:4100/student/2024/01/31/2048elements.html"
               } else {
                 console.error("User login failed");
                 // You can handle failed login attempts here
@@ -57,30 +79,5 @@ function login_user() {
       
       //return response
     }
-
-
-  </script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Page</title>
-  <link rel="stylesheet" href="styles.css"> <!-- Include the compiled CSS file -->
-</head>
-
-<body>
-  <!-- Your HTML login form -->
-  <div id="errorMessage"></div>
-  <form action="javascript:login_user()">
-    <p><label for="uid">User ID:</label>
-      <input type="text" name="uid" id="uid" required>
-    </p>
-    <p><label for="password">Password:</label>
-      <input type="password" name="password" id="password" required>
-    </p>
-    <p>
-     <button class="button-spacing">Log In</button>
-          <button onClick = "window.location.href ='http://127.0.0.1:4100/student/2024/02/06/signup.html'" class="button-spacing" >Sign Up</button>
-   </p>
-  </form>
-  <!-- Your JavaScript code --> 
 </body>
 </html>

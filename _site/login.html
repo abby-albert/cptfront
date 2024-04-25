@@ -20,7 +20,7 @@
 {"@context":"https://schema.org","@type":"WebPage","headline":"cptfront","url":"http://localhost:4100/login.html"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=a7cdc21cf541631cf4f19b8af268ebea67d0f17c">
+    <link rel="stylesheet" href="/assets/css/style.css?v=af4fe2879fe5cdbd2da284703dba9ca4252d4301">
     <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
 
 <!-- Setup Google Analytics -->
@@ -39,7 +39,29 @@
       <h1><a href="http://localhost:4100/">cptfront</a></h1>
       
 
-      <head>   
+      
+<p>  &lt;/script&gt;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Page</title>
+  <link rel="stylesheet" href="styles.css" /> <!-- Include the compiled CSS file -->
+&lt;/head&gt;</p>
+
+<body>
+  <!-- Your HTML login form -->
+  <div id="errorMessage"></div>
+  <form action="javascript:login_user()">
+    <p><label for="uid">User ID:</label>
+      <input type="text" name="uid" id="uid" required="" />
+    </p>
+    <p><label for="password">Password:</label>
+      <input type="password" name="password" id="password" required="" />
+    </p>
+    <p>
+     <button class="button-spacing">Log In</button>
+          <button onclick="window.location.href ='http://127.0.0.1:4100/student/2024/02/06/signup.html'" class="button-spacing">Sign Up</button>
+   </p>
+  </form>
 function login_user() {
       const enteredUid = document.getElementById("uid").value;
       const enteredPassword = document.getElementById("password").value;
@@ -80,7 +102,7 @@ function login_user() {
           .then(response =&gt; {
             if (response.ok) {
                 console.log("User logged in successfully");
-                window.location.href = "http://127.0.0.1:4100/student/2024/01/31/game.html"
+                window.location.href = "http://127.0.0.1:4100/student/2024/01/31/2048elements.html"
               } else {
                 console.error("User login failed");
                 // You can handle failed login attempts here
@@ -98,31 +120,6 @@ function login_user() {
       
       //return response
     }
-
-
-  &lt;/script&gt;
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login Page</title>
-  <link rel="stylesheet" href="styles.css" /> <!-- Include the compiled CSS file -->
-</head>
-
-<body>
-  <!-- Your HTML login form -->
-  <div id="errorMessage"></div>
-  <form action="javascript:login_user()">
-    <p><label for="uid">User ID:</label>
-      <input type="text" name="uid" id="uid" required="" />
-    </p>
-    <p><label for="password">Password:</label>
-      <input type="password" name="password" id="password" required="" />
-    </p>
-    <p>
-     <button class="button-spacing">Log In</button>
-          <button onclick="window.location.href ='http://127.0.0.1:4100/student/2024/02/06/signup.html'" class="button-spacing">Sign Up</button>
-   </p>
-  </form>
-  <!-- Your JavaScript code --> 
 </body>
 <p>&lt;/html&gt;</p>
 
