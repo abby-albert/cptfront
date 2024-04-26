@@ -38,7 +38,7 @@
         .then(response => {
           if (response.ok) {
             console.log("User logged in successfully");
-            window.location.href = "http://127.0.0.1:4100/student/2024/01/31/2048elements.html"
+            window.location.href = "http://127.0.0.1:4100/2048elements.html"
           } else {
             console.error("User login failed");
             // You can handle failed login attempts here
@@ -70,7 +70,7 @@
     </p>
     <p>
       <button class="button-spacing" onclick="login_user()">Log In</button>
-      <button onclick="window.location.href ='http://127.0.0.1:4100/student/2024/02/06/signup.html'" class="button-spacing">Sign Up</button>
+      <button onclick="window.location.href ='http://127.0.0.1:4100/signup.html'" class="button-spacing">Sign Up</button>
     </p>
   </form>
 </body>
