@@ -1,58 +1,45 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Signup</title>
-</head>
-<body>
-    <h1>User Signup</h1>
-    <form id="signup-form">
-        <label for="uid">uid:</label>
-        <input type="text" id="uid" required><br><br>
+<div id="signup">
+  <p><label>
+      Name:
+      <input type="text" name="name" id="name" required>
+  </label></p>
+  <p><label>
+      User ID:
+      <input type="text" name="uid" id="uid" required>
+  </label></p>
+  <p><label>
+      Password:
+      <input type="password" name="password" id="password" required>
+  </label></p>
+  <p>
+      <button class="button" type="submit" onclick="signup()" >Sign Up</button>
+  </p>
+</div>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" required><br><br>
-
-        <button type="submit">Sign Up</button>
-    </form>
-    <div id="message"></div>
-
-    <script>
-        document.getElementById("signup-form").addEventListener("submit", function(event) {
-            event.preventDefault(); // Prevent default form submission
-            
-            // Get form data
-            const username = document.getElementById("uid").value;
-            const password = document.getElementById("password").value;
-    
-            // Create data object
-            const data = {
-                uid: uid,
-                password: password
-            };
-    
-            // Send POST request to backend
-            fetch("http://127.0.0.1:8086/api/users/authenticate", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => {
-                if (response.ok) {
-                    // Display success message
-                    document.getElementById("message").innerHTML = "User registered successfully";
-                } else {
-                    throw new Error("Failed to register user");
-                }
-            })
-            .catch(error => {
-                // Display error message
-                document.getElementById("message").innerHTML = "Error: " + error.message;
-            });
-        });
-    </script>
-</body>
-</html>
+<script>
+  function signup() {
+       var name = document.getElementById('name').value;
+       var uid = document.getElementById('uid').value;
+       var password = document.getElementById('password').value;
+       var requestBody = {
+           name: name,
+           uid: uid,
+           password: password
+       };
+       fetch('http://127.0.0.1:8086/api/users/create', { 
+           method: 'POST',
+           headers: {
+               'Content-Type': 'application/json',
+           },
+           body: JSON.stringify(requestBody),
+       })
+       .then(response => response.json())
+       .then(data => {
+           console.log('Sign Up successful:', data);
+           window.location.href = "{{site.baseurl}}/login";
+       })
+       .catch(error => {
+           console.error('Error:', error);
+       });
+   }
+</script>
