@@ -70,7 +70,7 @@
     </p>
     <p>
       <button class="button-spacing" onclick="login_user()">Log In</button>
-      <button onclick="window.location.href ='http://127.0.0.1:4100/signup.html'" class="button-spacing">Sign Up</button>
+      <button onclick="window.location.href ='http:/127.0.0.1:4100/2048elements.html' "class="button-spacing">Sign Up</button>
     </p>
   </form>
 </body>
