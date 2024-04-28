@@ -52,22 +52,22 @@
   </style>
   <head>
     <script>
-      function login_user() {
-        const enteredUid = document.getElementById("uid").value;
-        const enteredPassword = document.getElementById("password").value;
-        console.log("Uid = " + enteredUid)
-        console.log("Password = " + enteredPassword)
+      function user_login() {
+        const inputedusername = document.getElementById("username").value;
+        const inputedPassword = document.getElementById("password").value;
+        console.log("username = " + inputedusername)
+        console.log("Password = " + inputedpassword)
         const signupHeaders = new Headers();
         signupHeaders.set('111', '222');
         signupHeaders.set("Accept", "*/*");
         signupHeaders.set("Accept-Language", "en-US,en;q=0.9");
         signupHeaders.set("Content-Type", "application/json");
   
-        login_api(enteredUid,enteredPassword)
+        login_api(inputedusername,inputedPassword)
   
         }
   
-      function login_api(uid, pw){
+      function login_api(username, pw){
         var myHeaders = new Headers();
         myHeaders.append("Accept", "*/*");
         myHeaders.append("Accept-Language", "en-US,en;q=0.9");
@@ -76,7 +76,7 @@
   
   
         var raw = JSON.stringify({
-            "uid": uid,
+            "username": username,
             "password": pw
           });
   
@@ -94,8 +94,8 @@
                 window.location.href = "http://127.0.0.1:4100/2048elements.html"
               } else {
                 console.error("User login failed");
-                  const errorMessageDiv = document.getElementById('errorMessage');
-                  errorMessageDiv.innerHTML = '<label style="color: red;">User Login Failed</label>';
+                  const errornote = document.getElementById('error');
+                  errornote.innerHTML = '<label style="color: red;">User Login Failed</label>';
                 }
           })
         .then(result => { 
@@ -118,9 +118,9 @@
   <body>
     <!-- Your HTML login form -->
     <div id="errorMessage"></div>
-    <form action="javascript:login_user()">
-      <p><label for="uid">User ID:</label>
-        <input type="text" name="uid" id="uid" required>
+    <form action="javascript:user_login()">
+      <p><label for="username">User ID:</label>
+        <input type="text" name="username" id="username" required>
       </p>
       <p><label for="password">Password:</label>
         <input type="password" name="password" id="password" required>
