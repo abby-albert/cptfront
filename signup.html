@@ -265,3 +265,32 @@ title: Pulse
         .catch((error) => console.error("Error:", error));
     }
 </script>
+<style>
+    body {
+        background-color: #FFE6F2; 
+        font-family: Arial, sans-serif; 
+        color: #661A33; 
+    }
+    h1, h2, h3 {
+        color: #FF66CC; 
+    }
+    ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+    li::before {
+        content: "•";
+        color: #FF66CC; 
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+    }
+    .container {
+        border: 2px solid #FF66CC; 
+        border-radius: 15px; 
+        padding: 20px; 
+        margin-bottom: 20px; 
+    }
+    </style>
+    
