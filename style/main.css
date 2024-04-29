@@ -180,9 +180,6 @@ hr {
     cursor: default;
     -webkit-touch-callout: none;
     -ms-touch-callout: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
     -ms-touch-action: none;
     touch-action: none;
     background: #d3c8bd;
@@ -657,7 +654,6 @@ hr {
     line-height: 42px;
     display: block;
     text-align: center;
-    float: right;
 }
 
 .game-explanation {
@@ -724,9 +720,6 @@ hr {
         cursor: default;
         -webkit-touch-callout: none;
         -ms-touch-callout: none;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
         -ms-touch-action: none;
         touch-action: none;
         background: #bbada0;
