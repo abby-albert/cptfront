@@ -1,45 +1,278 @@
-<div id="signup">
-  <p><label>
-      Name:
-      <input type="text" name="name" id="name" required>
-  </label></p>
-  <p><label>
-      User ID:
-      <input type="text" name="uid" id="uid" required>
-  </label></p>
-  <p><label>
-      Password:
-      <input type="password" name="password" id="password" required>
-  </label></p>
-  <p>
-      <button class="button" type="submit" onclick="signup()" >Sign Up</button>
-  </p>
-</div>
+</style>
+---
+layout: default
+comments: true
+title: Pulse
+---
 
-<script>
-  function signup() {
-       var name = document.getElementById('name').value;
-       var uid = document.getElementById('uid').value;
-       var password = document.getElementById('password').value;
-       var requestBody = {
-           name: name,
-           uid: uid,
-           password: password
-       };
-       fetch('http://127.0.0.1:8086/api/users/create', { 
-           method: 'POST',
-           headers: {
-               'Content-Type': 'application/json',
-           },
-           body: JSON.stringify(requestBody),
-       })
-       .then(response => response.json())
-       .then(data => {
-           console.log('Sign Up successful:', data);
-           window.location.href = "{{site.baseurl}}/login";
-       })
-       .catch(error => {
-           console.error('Error:', error);
-       });
-   }
+<div style="text-align: center; padding: 20px;">
+    <h1 style="color: #FF66CC; font-size: 36px;">Sign Up</h1>
+    <p style="color: #FF66CC; font-size: 18px;">This is where you create an account</p>
+</div>
+<div style="display: flex; justify-content: center; margin-bottom: 30px;">
+    <div style="width: 50%; background-color: #FFECF2; padding: 20px; border-radius: 15px;">
+        <h2 style="color: #FF66CC;">Enter your pulse number to see on average how much exercise people do to have that heartrate</h2>
+        <form id="formToGetOnePulseDetail">
+            <label for="Pulse" style="color: #FF66CC;">Pulse number to get details:</label><br />
+            <input type="text" id="Pulse" name="Pulse" style="padding: 8px; border-radius: 5px; margin-bottom: 10px;"><br />
+            <button type="submit" value="btnToGetPulseDetail" id="get_pulsey" style="background-color: #FF66CC; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
+            <div id="getOnePulseDetailResponse" style="color: #FF66CC; font-size: 18px;"></div>
+        </form>
+    </div>
+</div>
+<div style="display: flex; justify-content: center;">
+    <div style="width: 50%; background-color: #FFECF2; padding: 20px; border-radius: 15px;">
+        <h2 style="color: #FF66CC;">Add a new pulse number</h2>
+        <form id="myForm">
+            <label for="Pulse" style="color: #FF66CC;">What is your pulse rate now?</label><br />
+            <input type="text" id="Pulse" name="Pulse" style="padding: 8px; border-radius: 5px; margin-bottom: 10px;"><br />
+            <label for="Exercise" style="color: #FF66CC;">What level of exercise did you just do? - 1 for none, 2 for mild, 3 for extreme</label><br />
+            <input type="text" id="Exercise" name="Exercise" style="padding: 8px; border-radius: 5px; margin-bottom: 10px;"><br />
+            <button type="submit" value="Submit" id="create_pulsey" style="background-color: #FF66CC; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
+        </form>
+    </div>
+</div>
+<div style="text-align: center; margin-top: 30px;">
+    <h2 style="color: #FF66CC;">Pulse Data from all users</h2>
+    <table id="PulseTable" style="border-collapse: collapse; width: 80%; margin: 0 auto;">
+        <thead>
+            <tr>
+                <th style="background-color: #FF66CC; color: white; padding: 10px;">Pulse Number</th>
+                <th style="background-color: #FF66CC; color: white; padding: 10px;">Exercise</th>
+                <th style="background-color: #FF66CC; color: white; padding: 10px;">Edit</th>
+                <th style="background-color: #FF66CC; color: white; padding: 10px;">Delete</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+<div id="editModalBackdrop" class="modal-backdrop">
+    <div id="editModal" class="modal-content">
+        <button id="closeModal" class="close-modal">X</button>
+        <form id="editForm">
+            <label for="editActive" style="color: #FF66CC;">Pulse Number</label><br />
+            <input type="text" id="editActive" name="editActive" style="padding: 8px; border-radius: 5px; margin-bottom: 10px;"><br />
+            <label for="editExercise" style="color: #FF66CC;">Exercise</label><br />
+            <input type="text" id="editExercise" name="editExercise" style="padding: 8px; border-radius: 5px; margin-bottom: 10px;"><br />
+            <input type="submit" value="Update" style="background-color: #FF66CC; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">
+        </form>
+    </div>
+</div>
+<style>
+    #PulseTable {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+    #PulseTable th, #PulseTable td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+    #PulseTable th {
+        background-color: #F2F2F2;
+    }
+    body {
+        background-color: #FFE6F2; 
+        font-family: Arial, sans-serif; 
+    }
+    .modal-backdrop {
+    }
+    .modal-content {
+        color: white; 
+    }
+    form label {
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    button {
+        background-color: #FF66CC; 
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #PulseTable button {
+        background-color: #FF3399; 
+        color: white;
+        padding: 5px 10px;
+        margin: 2px;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+</style>
+<style>
+    .modal-backdrop {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 192, 203, 0.7); 
+        z-index: 1;
+    }
+    .modal-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #FF66CC; 
+        padding: 40px;
+        z-index: 2;
+    }
+    .close-modal {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: white;
+    }
+    .wrapper,
+    section {
+        max-width: 900px;
+    }
+</style>
+
+<script type="module">
+    import { uri, options } from '{{site.baseurl}}/assets/js/api/config.js';
+    const API_URL = uri + '/api/signup/';
+    const createbutton = document.getElementById("create_User");
+    createbutton.addEventListener("click", submitForm);
+    const getUserbutton = document.getElementById("get_user");
+    getUserbutton.addEventListener("click", getOneUser);
+    function loadItems() {
+        fetch(API_URL, {
+            method: 'GET'
+        })
+        .then((response) => response.json())
+        .then(data => {
+            displayItems(data);
+        })
+        .catch(error => {
+            console.error("Error calling get all user:", error);
+        });
+    }
+    function displayItems(items) {
+        const table = document.getElementById("UserTable");
+        items.forEach((User) => {
+            const row = table.insertRow();
+            row.setAttribute("data-id", User.id);
+            ["Name", "Password"].forEach((field) => {
+                const cell = row.insertCell();
+                cell.innerText = User[field];
+            });
+            const editCell = row.insertCell();
+            const editButton = document.createElement("button");
+            editButton.innerHTML = "Edit";
+            editButton.addUser("click", () => editUser(User.Username, User.Password));
+            editCell.appendChild(editButton);
+            const deleteCell = row.insertCell();
+            const deleteButton = document.createElement("button");
+            deleteButton.innerText = "Delete";
+            deleteButton.addUser("click", () => deleteUser(User.Username,row));
+            deleteCell.appendChild(deleteButton);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    }
+    function editUser(Username, Password) {
+        console.log('Edit User:', Username);
+        const form = document.getElementById("editForm");
+        form.querySelector("#editActive").value = Username;
+        form.querySelector("#editExercise").value = Password;
+        document.getElementById("editModalBackdrop").style.display = "block"; 
+    }
+    function deleteUser(Username, row) {
+        console.log('Username Pulse:', Username);
+        const confirmation = prompt('Type "DELETE" to confirm.');
+        if (confirmation === "DELETE") {
+            const payload = {
+                Active
+            };
+            console.log(JSON.stringify(payload));
+            fetch(API_URL, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(payload)
+            })
+            .then((response) => {
+                if (response.ok) {
+                    console.log("Successfully deleted",Username);
+                    location.reload();
+                    return response.json();
+                } else {
+                    alert("Server error");
+                    throw new Error("Server");
+                }
+            })
+        }
+    }
+    document.addUser("DOMContentLoaded", function () {
+        loadItems();
+        document.getElementById("closeModal").addUser("click", function () {
+            document.getElementById("editModalBackdrop").style.display = "none"; 
+        });
+    });
+    function submitForm(event) {
+        event.preventDefault();
+        const form = document.getElementById('myForm')
+        const Username = form.elements['User'].value
+        const Password = parseInt(form.elements['Password'].value)
+        const payload = {
+            Username,
+            Password,
+        };
+        console.log(JSON.stringify(payload));
+        fetch("http://127.0.0.1:8086/api/signup", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(payload),
+        })
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                alert("Server error");
+                throw new Error("Server");
+            }
+        })
+        .then((data) => {
+            location.reload();
+        })
+        .catch((error) => console.error("Error:", error));
+    }
+    function getOneUser(event) {
+        event.preventDefault();
+        const form = document.getElementById('formToGetOneUserDetail')
+        const Usernman = form.elements['User'].value
+        const responseDiv = document.getElementById('getOneUserDetailResponse')
+        const URL_FOR_GetOne = API_URL + Active;
+        fetch(URL_FOR_GetOne, {
+            method: "GET"
+        })
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                alert("Server error");
+                throw new Error("Server");
+            }
+        })
+        .then((data) => {
+            console.log(data);
+            responseDiv.textContent = " sucessful signup! ";
+        })
+        .catch((error) => console.error("Error:", error));
+    }
 </script>
