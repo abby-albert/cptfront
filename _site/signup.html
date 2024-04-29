@@ -6,41 +6,41 @@ title: Pulse
 ---
 
 <div style="text-align: center; padding: 20px;">
-    <h1 style="color: #FF66CC; font-size: 36px;">Sign Up</h1>
-    <p style="color: #FF66CC; font-size: 18px;">This is where you create an account</p>
+    <h1 style="color: #000000; font-size: 36px;">Sign Up</h1>
+    <p style="color: #000000; font-size: 18px;">This is where you create an account</p>
 </div>
 <div style="display: flex; justify-content: center; margin-bottom: 30px;">
     <div style="width: 50%; background-color: #FFECF2; padding: 20px; border-radius: 15px;">
-        <h2 style="color: #FF66CC;">Enter your pulse number to see on average how much exercise people do to have that heartrate</h2>
+        <h2 style="color: #000000;">Enter your pulse number to see on average how much exercise people do to have that heartrate</h2>
         <form id="formToGetOnePulseDetail">
-            <label for="Pulse" style="color: #FF66CC;">Pulse number to get details:</label><br />
+            <label for="Pulse" style="color: #000000;">Pulse number to get details:</label><br />
             <input type="text" id="Pulse" name="Pulse" style="padding: 8px; border-radius: 5px; margin-bottom: 10px;"><br />
-            <button type="submit" value="btnToGetPulseDetail" id="get_pulsey" style="background-color: #FF66CC; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
-            <div id="getOnePulseDetailResponse" style="color: #FF66CC; font-size: 18px;"></div>
+            <button type="submit" value="btnToGetPulseDetail" id="get_pulsey" style="background-color: #000000; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
+            <div id="getOnePulseDetailResponse" style="color: #000000; font-size: 18px;"></div>
         </form>
     </div>
 </div>
 <div style="display: flex; justify-content: center;">
     <div style="width: 50%; background-color: #FFECF2; padding: 20px; border-radius: 15px;">
-        <h2 style="color: #FF66CC;">Add a new pulse number</h2>
+        <h2 style="color: #000000;">Sign Up</h2>
         <form id="myForm">
-            <label for="Pulse" style="color: #FF66CC;">What is your pulse rate now?</label><br />
+            <label for="Pulse" style="color: #000000;">Username</label><br />
             <input type="text" id="Pulse" name="Pulse" style="padding: 8px; border-radius: 5px; margin-bottom: 10px;"><br />
-            <label for="Exercise" style="color: #FF66CC;">What level of exercise did you just do? - 1 for none, 2 for mild, 3 for extreme</label><br />
+            <label for="Exercise" style="color: #000000;">Password</label><br />
             <input type="text" id="Exercise" name="Exercise" style="padding: 8px; border-radius: 5px; margin-bottom: 10px;"><br />
-            <button type="submit" value="Submit" id="create_pulsey" style="background-color: #FF66CC; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
+            <button type="submit" value="Submit" id="create_pulsey" style="background-color: #000000; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
         </form>
     </div>
 </div>
 <div style="text-align: center; margin-top: 30px;">
-    <h2 style="color: #FF66CC;">Pulse Data from all users</h2>
+    <h2 style="color: #000000;">All user information</h2>
     <table id="PulseTable" style="border-collapse: collapse; width: 80%; margin: 0 auto;">
         <thead>
             <tr>
-                <th style="background-color: #FF66CC; color: white; padding: 10px;">Pulse Number</th>
-                <th style="background-color: #FF66CC; color: white; padding: 10px;">Exercise</th>
-                <th style="background-color: #FF66CC; color: white; padding: 10px;">Edit</th>
-                <th style="background-color: #FF66CC; color: white; padding: 10px;">Delete</th>
+                <th style="background-color: #000000; color: white; padding: 10px;">Username</th>
+                <th style="background-color: #000000; color: white; padding: 10px;">Password</th>
+                <th style="background-color: #000000; color: white; padding: 10px;">Edit</th>
+                <th style="background-color: #000000; color: white; padding: 10px;">Delete</th>
             </tr>
         </thead>
         <tbody></tbody>
@@ -50,11 +50,11 @@ title: Pulse
     <div id="editModal" class="modal-content">
         <button id="closeModal" class="close-modal">X</button>
         <form id="editForm">
-            <label for="editActive" style="color: #FF66CC;">Pulse Number</label><br />
+            <label for="editActive" style="color: #000000;">Pulse Number</label><br />
             <input type="text" id="editActive" name="editActive" style="padding: 8px; border-radius: 5px; margin-bottom: 10px;"><br />
-            <label for="editExercise" style="color: #FF66CC;">Exercise</label><br />
+            <label for="editExercise" style="color: #000000;">Exercise</label><br />
             <input type="text" id="editExercise" name="editExercise" style="padding: 8px; border-radius: 5px; margin-bottom: 10px;"><br />
-            <input type="submit" value="Update" style="background-color: #FF66CC; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">
+            <input type="submit" value="Update" style="background-color: #000000; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">
         </form>
     </div>
 </div>
@@ -76,8 +76,6 @@ title: Pulse
         background-color: #FFE6F2; 
         font-family: Arial, sans-serif; 
     }
-    .modal-backdrop {
-    }
     .modal-content {
         color: white; 
     }
@@ -86,7 +84,7 @@ title: Pulse
         margin-bottom: 5px;
     }
     button {
-        background-color: #FF66CC; 
+        background-color: #000000; 
         color: white;
         padding: 10px 15px;
         border: none;
@@ -94,7 +92,7 @@ title: Pulse
         cursor: pointer;
     }
     #PulseTable button {
-        background-color: #FF3399; 
+        background-color: #d3d3d3; 
         color: white;
         padding: 5px 10px;
         margin: 2px;
@@ -119,7 +117,7 @@ title: Pulse
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background: #FF66CC; 
+        background: #000000; 
         padding: 40px;
         z-index: 2;
     }
