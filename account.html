@@ -94,8 +94,8 @@
                 window.location.href = "http://127.0.0.1:4100/2048elements.html"
               } else {
                 console.error("User login failed");
-                  const errornote = document.getElementById('error');
-                  errornote.innerHTML = '<label style="color: red;">User Login Failed</label>';
+                  const errornoteDiv = document.getElementById('error');
+                  errornoteDiv.innerHTML = '<label style="color: red;">User Login Failed</label>';
                 }
           })
         .then(result => { 
