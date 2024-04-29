@@ -1,338 +1,126 @@
-<!DOCTYPE html>
-<html lang="en-US">
-  <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Pulse | cptfront</title>
-<meta name="generator" content="Jekyll v3.9.3" />
-<meta property="og:title" content="Pulse" />
-<meta property="og:locale" content="en_US" />
-<link rel="canonical" href="http://localhost:4100/signup.html" />
-<meta property="og:url" content="http://localhost:4100/signup.html" />
-<meta property="og:site_name" content="cptfront" />
-<meta property="og:type" content="website" />
-<meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Pulse" />
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","headline":"Pulse","url":"http://localhost:4100/signup.html"}</script>
-<!-- End Jekyll SEO tag -->
-
-    <link rel="stylesheet" href="/assets/css/style.css?v=b8c8d652f7d53c234b07592946c1cf57f31e5052">
-    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
-
-<!-- Setup Google Analytics -->
-
-
-
-<!-- You can set your favicon here -->
-<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
-
-<!-- end custom head snippets -->
-
-  </head>
-  <body>
-    <div class="container-lg px-3 my-5 markdown-body">
-      
-      <h1><a href="http://localhost:4100/">cptfront</a></h1>
-      
-
-      <div style="text-align: center; padding: 20px;">
-    <h1 style="color: #000000; font-size: 36px;">Sign Up</h1>
-    <p style="color: #000000; font-size: 18px;">This is where you create an account</p>
-</div>
-<div style="display: flex; justify-content: center;">
-    <div style="width: 50%; background-color: #d3d3d3; padding: 20px; border-radius: 15px;">
-        <h2 style="color: #000000;">Sign Up</h2>
-        <form id="myForm">
-            <label for="User" style="color: #000000;">Username</label><br />
-            <input type="text" id="User" name="User" style="padding: 8px; border-radius: 5px; margin-bottom: 10px;"><br />
-            <label for="Password" style="color: #000000;">Password</label><br />
-            <input type="text" id="Password" name="Password" style="padding: 8px; border-radius: 5px; margin-bottom: 10px;"><br />
-            <button type="submit" value="Submit" id="create_pulsey" style="background-color: #000000; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
-        </form>
-    </div>
-</div>
-<div style="text-align: center; margin-top: 30px;">
-    <h2 style="color: #000000;">All user information</h2>
-    <table id="PulseTable" style="border-collapse: collapse; width: 80%; margin: 0 auto;">
-        <thead>
-            <tr>
-                <th style="background-color: #000000; color: white; padding: 10px;">Username</th>
-                <th style="background-color: #000000; color: white; padding: 10px;">Password</th>
-                <th style="background-color: #000000; color: white; padding: 10px;">Edit</th>
-                <th style="background-color: #000000; color: white; padding: 10px;">Delete</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
-</div>
-<div id="editModalBackdrop" class="modal-backdrop">
-    <div id="editModal" class="modal-content">
-        <button id="closeModal" class="close-modal">X</button>
-        <form id="editForm">
-            <label for="editUsername" style="color: #000000;">Pulse Number</label><br />
-            <input type="text" id="editActive" name="editUsername" style="padding: 8px; border-radius: 5px; margin-bottom: 10px;"><br />
-            <label for="editPassword" style="color: #000000;">Exercise</label><br />
-            <input type="text" id="editExercise" name="editPassword" style="padding: 8px; border-radius: 5px; margin-bottom: 10px;"><br />
-            <input type="submit" value="Update" style="background-color: #000000; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">
-        </form>
-    </div>
-</div>
-<style>
-    #PulseTable {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-    }
-    #PulseTable th, #PulseTable td {
-        border: 1px solid #ddd;
-        padding: 8px;
-        text-align: left;
-    }
-    #PulseTable th {
-        background-color: #ADD8E6;
-    }
-    body {
-        background-color: #ADD8E6; 
-        font-family: Arial, sans-serif; 
-    }
-    .modal-backdrop {
-    background-color: rgba(192, 208, 255, 0.91); /* Example background color with some transparency */
-}
-    .modal-content {
-        color: white; 
-    }
-    form label {
-        font-weight: bold;
-        margin-bottom: 5px;
-    }
-    button {
-        background-color: #000000; 
-        color: white;
-        padding: 10px 15px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    #PulseTable button {
-        background-color: #d3d3d3; 
-        color: white;
-        padding: 5px 10px;
-        margin: 2px;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
-    }
-</style>
-<style>
-    .modal-backdrop {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(192, 208, 255, 0.91); 
-        z-index: 1;
-    }
-    .modal-content {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: #000000; 
-        padding: 40px;
-        z-index: 2;
-    }
-    .close-modal {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        cursor: pointer;
-        background: none;
-        border: none;
-        font-size: 24px;
-        color: white;
-    }
-    .wrapper,
-    section {
-        max-width: 900px;
-    }
-</style>
-
-<script type="module">
-    import { uri, options } from '/assets/js/api/config.js';
-    const API_URL = uri + '/api/signup/';
-    const createbutton = document.getElementById("create_User");
-    createbutton.addEventListener("click", submitForm);
-    const getUserbutton = document.getElementById("get_user");
-    getUserbutton.addEventListener("click", getOneUser);
-    function loadItems() {
-        fetch("http://127.0.0.1:8086/api/signup", {
-            method: 'GET'
-        })
-        .then((response) => response.json())
-        .then(data => {
-            displayItems(data);
-        })
-        .catch(error => {
-            console.error("Error calling get all user:", error);
-        });
-    }
-    function displayItems(items) {
-        const table = document.getElementById("UserTable");
-        items.forEach((User) => {
-            const row = table.insertRow();
-            row.setAttribute("data-id", User.id);
-            ["Name", "Password"].forEach((field) => {
-                const cell = row.insertCell();
-                cell.innerText = User[field];
-            });
-            const editCell = row.insertCell();
-            const editButton = document.createElement("button");
-            editButton.innerHTML = "Edit";
-            editButton.addUser("click", () => editUser(User.Username, User.Password));
-            editCell.appendChild(editButton);
-            const deleteCell = row.insertCell();
-            const deleteButton = document.createElement("button");
-            deleteButton.innerText = "Delete";
-            deleteButton.addUser("click", () => deleteUser(User.Username,row));
-            deleteCell.appendChild(deleteButton);
-        })
-        .catch((error) => {
-            console.error('Error:', error);
-        });
-    }
-    function editUser(Username, Password) {
-        console.log('Edit User:', Username);
-        const form = document.getElementById("editForm");
-        form.querySelector("#editActive").value = Username;
-        form.querySelector("#editExercise").value = Password;
-        document.getElementById("editModalBackdrop").style.display = "block"; 
-    }
-    function deleteUser(Username, row) {
-        console.log('Username Pulse:', Username);
-        const confirmation = prompt('Type "DELETE" to confirm.');
-        if (confirmation === "DELETE") {
-            const payload = {
-                Active
-            };
-            console.log(JSON.stringify(payload));
-            fetch(API_URL, {
-                method: "DELETE",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(payload)
-            })
-            .then((response) => {
-                if (response.ok) {
-                    console.log("Successfully deleted",Username);
-                    location.reload();
-                    return response.json();
-                } else {
-                    alert("Server error");
-                    throw new Error("Server");
-                }
-            })
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #ff85a2, #ff007f);
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 20px;
         }
-    }
-    document.addUser("DOMContentLoaded", function () {
-        loadItems();
-        document.getElementById("closeModal").addUser("click", function () {
-            document.getElementById("editModalBackdrop").style.display = "none"; 
-        });
-    });
-    function submitForm(event) {
-        event.preventDefault();
-        const form = document.getElementById('myForm')
-        const Username = form.elements['User'].value
-        const Password = parseInt(form.elements['Password'].value)
-        const payload = {
-            Username,
-            Password,
-        };
-        console.log(JSON.stringify(payload));
-        fetch("http://127.0.0.1:8086/api/signup", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(payload),
-        })
-        .then((response) => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                alert("Server error");
-                throw new Error("Server");
-            }
-        })
-        .then((data) => {
-            location.reload();
-        })
-        .catch((error) => console.error("Error:", error));
-    }
-    function getOneUser(event) {
-        event.preventDefault();
-        const form = document.getElementById('formToGetOneUserDetail')
-        const Usernman = form.elements['User'].value
-        const responseDiv = document.getElementById('getOneUserDetailResponse')
-        const URL_FOR_GetOne = API_URL + Active;
-        fetch(URL_FOR_GetOne, {
-            method: "GET"
-        })
-        .then((response) => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                alert("Server error");
-                throw new Error("Server");
-            }
-        })
-        .then((data) => {
-            console.log(data);
-            responseDiv.textContent = " sucessful signup! ";
-        })
-        .catch((error) => console.error("Error:", error));
-    }
-</script>
-<style>
-    body {
-        background-color: #ADD8E6; 
-        font-family: Arial, sans-serif; 
-        color: #661A33; 
-    }
-    h1, h2, h3 {
-        color: #FF66CC; 
-    }
-    ul {
-        list-style-type: none;
-        padding-left: 0;
-    }
-    li::before {
-        content: "•";
-        color: #FF66CC; 
-        font-weight: bold;
-        display: inline-block;
-        width: 1em;
-        margin-left: -1em;
-    }
-    .container {
-        border: 2px solid #FF66CC; 
-        border-radius: 15px; 
-        padding: 20px; 
-        margin-bottom: 20px; 
-    }
+        .container {
+            text-align: center;
+            padding: 50px;
+            background-color: rgb(255, 182, 193);
+            border-radius: 10px;
+            margin: 50px auto;
+            max-width: 600px;
+        }
+        h1 {
+            color: #333;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        #save-button {
+            background-color: #8257B4;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        #weekly-log {
+            text-align: left;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+        }
+        #weekly-log table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        #weekly-log th, #weekly-log td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        .dropdown {
+            display: inline-block;
+            width: 100%;
+        }
+        .dropdown select {
+            width: 100%;
+            padding: 10px;
+        }
     </style>
-    
-
-      
+</head>
+<body>
+    <div class="container">
+        <h1>Username</h1>
+        <input type="text" id="Username" placeholder="input Username" required>
+        <h1>Password</h1>
+        <input type="text" id="Password" placeholder="input Password" required>
+        <br><br>
+        <button id="save-button">SignUp</button>
+        <!-- Weekly Planner Display -->
+        <div id="signup">
+            <h2>Signup</h2>
+            <div id="User-Log">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Password</th>
+                        </tr>
+                    </thead>
+                    <tbody id="log-uers">
+                        <!-- Log entries will be displayed here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
-    <script>anchors.add();</script>
-  </body>
+    <script>
+        // JavaScript to save log entries to local storage and display weekly log
+        document.getElementById("save-button").addEventListener("click", function () {
+            const Username = document.getElementById("username").value;
+            const Password = document.getElementById("password").value;
+            const currentDate = new Date().toLocaleDateString();
+            if (Username !== "" && Password !== "") {
+                const entry = {
+                    Username: Username,
+                    Password: Password,
+                };
+                const UserLog = JSON.parse(localStorage.getItem("UserLog")) || [];
+                UserLog.push(entry);
+                localStorage.setItem("UserLog", JSON.stringify(UserLog));
+                
+                // Clear input fields
+                document.getElementById("Username").value = "";
+                document.getElementById("Password").value = "";
+                displayUserLog();
+                alert("User created successfully!");
+            } else {
+                alert("Please fill in all fields.");
+            }
+        });
+        function displayUserLog() {
+            const UserLog = JSON.parse(localStorage.getItem("UserLog")) || [];
+            const tableBody = document.getElementById("log-User");
+            tableBody.innerHTML = ""; // Clear previous entries
+            UserLog.forEach(entry => {
+                const row = tableBody.insertRow();
+                row.insertCell().textContent = entry.Username;
+                row.insertCell().textContent = entry.Password;
+            });
+        }
+        displayUserLog();
+    </script>
+</body>
 </html>
