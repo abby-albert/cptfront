@@ -1,24 +1,47 @@
-</style>
----
-layout: default
-comments: true
-title: Pulse
----
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<div style="text-align: center; padding: 20px;">
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Pulse | cptfront</title>
+<meta name="generator" content="Jekyll v3.9.3" />
+<meta property="og:title" content="Pulse" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="http://localhost:4100/signup.html" />
+<meta property="og:url" content="http://localhost:4100/signup.html" />
+<meta property="og:site_name" content="cptfront" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Pulse" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","headline":"Pulse","url":"http://localhost:4100/signup.html"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="stylesheet" href="/assets/css/style.css?v=4aaf7f60d33e2e9d455db408f49c038fadc96edd">
+    <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
+
+<!-- Setup Google Analytics -->
+
+
+
+<!-- You can set your favicon here -->
+<!-- link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" -->
+
+<!-- end custom head snippets -->
+
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      
+      <h1><a href="http://localhost:4100/">cptfront</a></h1>
+      
+
+      <div style="text-align: center; padding: 20px;">
     <h1 style="color: #000000; font-size: 36px;">Sign Up</h1>
     <p style="color: #000000; font-size: 18px;">This is where you create an account</p>
-</div>
-<div style="display: flex; justify-content: center; margin-bottom: 30px;">
-    <div style="width: 50%; background-color: #FFECF2; padding: 20px; border-radius: 15px;">
-        <h2 style="color: #000000;">Enter your pulse number to see on average how much exercise people do to have that heartrate</h2>
-        <form id="formToGetOnePulseDetail">
-            <label for="Pulse" style="color: #000000;">Pulse number to get details:</label><br />
-            <input type="text" id="Pulse" name="Pulse" style="padding: 8px; border-radius: 5px; margin-bottom: 10px;"><br />
-            <button type="submit" value="btnToGetPulseDetail" id="get_pulsey" style="background-color: #000000; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
-            <div id="getOnePulseDetailResponse" style="color: #000000; font-size: 18px;"></div>
-        </form>
-    </div>
 </div>
 <div style="display: flex; justify-content: center;">
     <div style="width: 50%; background-color: #FFECF2; padding: 20px; border-radius: 15px;">
@@ -109,7 +132,7 @@ title: Pulse
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(255, 192, 203, 0.7); 
+        background-color: rgba(192, 208, 255, 0.91); 
         z-index: 1;
     }
     .modal-content {
@@ -138,7 +161,7 @@ title: Pulse
 </style>
 
 <script type="module">
-    import { uri, options } from '{{site.baseurl}}/assets/js/api/config.js';
+    import { uri, options } from '/assets/js/api/config.js';
     const API_URL = uri + '/api/signup/';
     const createbutton = document.getElementById("create_User");
     createbutton.addEventListener("click", submitForm);
@@ -274,3 +297,10 @@ title: Pulse
         .catch((error) => console.error("Error:", error));
     }
 </script>
+
+      
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>
