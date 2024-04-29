@@ -20,7 +20,7 @@
 {"@context":"https://schema.org","@type":"WebPage","headline":"Pulse","url":"http://localhost:4100/signup.html"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=d1e816db87b1dcbc01628ddb1fe6f2f2e1858c31">
+    <link rel="stylesheet" href="/assets/css/style.css?v=4b391bff98de6b6ef6a14d75391082d092e1ec8a">
     <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
 
 <!-- Setup Google Analytics -->
@@ -42,6 +42,17 @@
       <div style="text-align: center; padding: 20px;">
     <h1 style="color: #000000; font-size: 36px;">Sign Up</h1>
     <p style="color: #000000; font-size: 18px;">This is where you create an account</p>
+</div>
+<div style="display: flex; justify-content: center; margin-bottom: 30px;">
+    <div style="width: 50%; background-color: #FFECF2; padding: 20px; border-radius: 15px;">
+        <h2 style="color: #FF66CC;">Enter your pulse number to see on average how much exercise people do to have that heartrate</h2>
+        <form id="formToGetOnePulseDetail">
+            <label for="Pulse" style="color: #FF66CC;">Pulse number to get details:</label><br />
+            <input type="text" id="Pulse" name="Pulse" style="padding: 8px; border-radius: 5px; margin-bottom: 10px;"><br />
+            <button type="submit" value="btnToGetPulseDetail" id="get_pulsey" style="background-color: #FF66CC; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
+            <div id="getOnePulseDetailResponse" style="color: #FF66CC; font-size: 18px;"></div>
+        </form>
+    </div>
 </div>
 <div style="display: flex; justify-content: center;">
     <div style="width: 50%; background-color: #FFECF2; padding: 20px; border-radius: 15px;">
