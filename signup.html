@@ -5,7 +5,7 @@
   </label></p>
   <p><label>
       User ID:
-      <input type="text" name="username" id="username" required>
+      <input type="text" name="uid" id="uid" required>
   </label></p>
   <p><label>
       Password:
@@ -19,11 +19,11 @@
 <script>
   function signup() {
        var name = document.getElementById('name').value;
-       var username = document.getElementById('username').value;
+       var uid = document.getElementById('uid').value;
        var password = document.getElementById('password').value;
        var requestBody = {
            name: name,
-           username: username,
+           uid: uid,
            password: password
        };
        fetch('http://127.0.0.1:8086/api/users/create', { 

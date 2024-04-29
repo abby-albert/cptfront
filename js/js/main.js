@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     loginForm.addEventListener('submit', function (event) {
         event.preventDefault();
-        const username = document.getElementById('login-username').value;
+        const uid = document.getElementById('login-uid').value;
         const password = document.getElementById('login-password').value;
 
         // Assuming a successful login, redirect to the specified URL
@@ -12,13 +12,13 @@ document.addEventListener('DOMContentLoaded', function () {
         redirectToPage(redirectUrl);
 
         // You can replace this with your actual login logic
-        console.log('Login:', username, password);
+        console.log('Login:', uid, password);
     });
 
     signupForm.addEventListener('submit', function (event) {
         event.preventDefault();
         const name = document.getElementById('signup-name').value;
-        const username = document.getElementById('signup-username').value;
+        const uid = document.getElementById('signup-uid').value;
         const password = document.getElementById('signup-password').value;
 
         // Assuming a successful signup, redirect to the specified URL
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
         redirectToPage(redirectUrl);
 
         // You can replace this with your actual signup logic
-        console.log('Signup:', name, username, password);
+        console.log('Signup:', name, uid, password);
     });
 
     function redirectToPage(url) {

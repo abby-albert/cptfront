@@ -53,9 +53,9 @@
   <head>
     <script>
       function user_login() {
-        const inputedusername = document.getElementById("username").value;
+        const inputeduid = document.getElementById("uid").value;
         const inputedPassword = document.getElementById("password").value;
-        console.log("username = " + inputedusername)
+        console.log("uid = " + inputeduid)
         console.log("Password = " + inputedpassword)
         const signupHeaders = new Headers();
         signupHeaders.set('111', '222');
@@ -63,11 +63,11 @@
         signupHeaders.set("Accept-Language", "en-US,en;q=0.9");
         signupHeaders.set("Content-Type", "application/json");
   
-        login_api(inputedusername,inputedPassword)
+        login_api(inputeduid,inputedPassword)
   
         }
   
-      function login_api(username, pw){
+      function login_api(uid, pw){
         var myHeaders = new Headers();
         myHeaders.append("Accept", "*/*");
         myHeaders.append("Accept-Language", "en-US,en;q=0.9");
@@ -76,7 +76,7 @@
   
   
         var raw = JSON.stringify({
-            "username": username,
+            "uid": uid,
             "password": pw
           });
   
@@ -119,8 +119,8 @@
     <!-- Your HTML login form -->
     <div id="errorMessage"></div>
     <form action="javascript:user_login()">
-      <p><label for="username">User ID:</label>
-        <input type="text" name="username" id="username" required>
+      <p><label for="uid">User ID:</label>
+        <input type="text" name="uid" id="uid" required>
       </p>
       <p><label for="password">Password:</label>
         <input type="password" name="password" id="password" required>
