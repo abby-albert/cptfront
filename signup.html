@@ -12,10 +12,10 @@ title: Pulse
     <div style="width: 50%; background-color: #FFECF2; padding: 20px; border-radius: 15px;">
         <h2 style="color: #000000;">Sign Up</h2>
         <form id="myForm">
-            <label for="Pulse" style="color: #000000;">Username</label><br />
-            <input type="text" id="Pulse" name="Pulse" style="padding: 8px; border-radius: 5px; margin-bottom: 10px;"><br />
-            <label for="Exercise" style="color: #000000;">Password</label><br />
-            <input type="text" id="Exercise" name="Exercise" style="padding: 8px; border-radius: 5px; margin-bottom: 10px;"><br />
+            <label for="User" style="color: #000000;">Username</label><br />
+            <input type="text" id="User" name="User" style="padding: 8px; border-radius: 5px; margin-bottom: 10px;"><br />
+            <label for="Password" style="color: #000000;">Password</label><br />
+            <input type="text" id="Password" name="Password" style="padding: 8px; border-radius: 5px; margin-bottom: 10px;"><br />
             <button type="submit" value="Submit" id="create_pulsey" style="background-color: #000000; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">Submit</button>
         </form>
     </div>
@@ -38,10 +38,10 @@ title: Pulse
     <div id="editModal" class="modal-content">
         <button id="closeModal" class="close-modal">X</button>
         <form id="editForm">
-            <label for="editActive" style="color: #000000;">Pulse Number</label><br />
-            <input type="text" id="editActive" name="editActive" style="padding: 8px; border-radius: 5px; margin-bottom: 10px;"><br />
-            <label for="editExercise" style="color: #000000;">Exercise</label><br />
-            <input type="text" id="editExercise" name="editExercise" style="padding: 8px; border-radius: 5px; margin-bottom: 10px;"><br />
+            <label for="editUsername" style="color: #000000;">Pulse Number</label><br />
+            <input type="text" id="editActive" name="editUsername" style="padding: 8px; border-radius: 5px; margin-bottom: 10px;"><br />
+            <label for="editPassword" style="color: #000000;">Exercise</label><br />
+            <input type="text" id="editExercise" name="editPassword" style="padding: 8px; border-radius: 5px; margin-bottom: 10px;"><br />
             <input type="submit" value="Update" style="background-color: #000000; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer;">
         </form>
     </div>
@@ -133,7 +133,7 @@ title: Pulse
     const getUserbutton = document.getElementById("get_user");
     getUserbutton.addEventListener("click", getOneUser);
     function loadItems() {
-        fetch(API_URL, {
+        fetch("http://127.0.0.1:8086/api/signup", {
             method: 'GET'
         })
         .then((response) => response.json())
