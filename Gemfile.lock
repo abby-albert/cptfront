@@ -271,6 +271,7 @@ PLATFORMS
 DEPENDENCIES
   execjs (~> 2.8)
   github-pages
+  liquid (= 4.0.4)
   webrick (~> 1.7)
 
 BUNDLED WITH
