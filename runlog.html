@@ -103,7 +103,7 @@
             const weight = document.getElementById("weight").value;
             const exercise = document.getElementById("exercise").value;
             const caloriesBurned = document.getElementById("calories-burned").value;
-            const currentDate = new Date().toLocaleDateString();
+           // const currentDate = new Date().toLocaleDateString();
             if (day !== "" && date !== "" && weight !== "" && exercise !== "" && caloriesBurned !== "") {
                 const entry = {
                     day: day,
@@ -114,7 +114,7 @@
                 };
                 const dailyLog = JSON.parse(localStorage.getItem("dailyLog")) || [];
                 dailyLog.push(entry);
-                localStorage.setItem("weeklyLog", JSON.stringify(dailyLog));
+                localStorage.setItem("dailyLog", JSON.stringify(dailyLog));
                 
                 // Clear input fields
                 document.getElementById("day").value = "";
@@ -122,11 +122,11 @@
                 document.getElementById("weight").value = "";
                 document.getElementById("exercise").value = "";
                 document.getElementById("calories-burned").value = "";
-                displayWeeklyLog();
+                displaydailyLog();
                 alert("Entry logged successfully!");
    //          else {
    //             alert("Please fill in all fields.");
-            }
+            }}
         
         function displaydailyLog() {
             const dailyLog = JSON.parse(localStorage.getItem("dailyLog")) || [];
