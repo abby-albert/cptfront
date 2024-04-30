@@ -53,17 +53,17 @@
   <head>
     <script>
       function login_user() {
-        const inputeduid = document.getElementById("uid").value;
-        const inputedPassword = document.getElementById("password").value;
-        console.log("uid = " + inputeduid)
-        console.log("Password = " + inputedPassword)
+        const enteredUid = document.getElementById("uid").value;
+        const enteredPassword = document.getElementById("password").value;
+        console.log("Uid = " + enteredUid)
+        console.log("Password = " + enteredPassword)
         const signupHeaders = new Headers();
         signupHeaders.set('111', '222');
         signupHeaders.set("Accept", "*/*");
         signupHeaders.set("Accept-Language", "en-US,en;q=0.9");
         signupHeaders.set("Content-Type", "application/json");
   
-        login_api(inputeduid,inputedPassword)
+        login_api(enteredUid,enteredPassword)
   
         }
   
@@ -91,11 +91,12 @@
             .then(response => {
               if (response.ok) {
                 console.log("User logged in successfully");
-                window.location.href = "http://127.0.0.1:4100/2048elements.html"
+                window.location.href = "http://127.0.0.1:4100/games.html"
               } else {
                 console.error("User login failed");
-                  const errornote = document.getElementById('error');
-                  errornote.innerHTML = '<label style="color: red;">User Login Failed</label>';
+              // You can handle failed login attempts here
+                  const errorMessageDiv = document.getElementById('errorMessage');
+                  errorMessageDiv.innerHTML = '<label style="color: red;">User Login Failed</label>';
                 }
           })
         .then(result => { 
