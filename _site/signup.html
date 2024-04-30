@@ -98,21 +98,25 @@
 
   <script>
     function signup_user() {
+      const inputedName = document.getElementById("Name").value;
       const inputeduid = document.getElementById("Username").value;
       const inputedPassword = document.getElementById("Password").value;
+      const inputedNotes = document.getElementById("Notes").value;
+      console.log("Name = " + inputedName)
       console.log("Username = " + inputeduid)
       console.log("Password = " + inputedPassword)
+      console.log("Notes = " + inputedNotes)
       const signupHeaders = new Headers();
       signupHeaders.set('111', '222');
       signupHeaders.set("Accept", "*/*");
       signupHeaders.set("Accept-Language", "en-US,en;q=0.9");
       signupHeaders.set("Content-Type", "application/json");
 
-      signup_api(inputeduid,inputedPassword)
+      signup_api(inputedName, inputeduid,inputedPassword, inputedNotes)
 
       }
 
-    function signup_api(uid, pw){
+    function signup_api(name, uid, pw, notes){
       var myHeaders = new Headers();
       myHeaders.append("Accept", "*/*");
       myHeaders.append("Accept-Language", "en-US,en;q=0.9");
@@ -121,8 +125,10 @@
 
 
       var raw = JSON.stringify({
-          "Username": uid,
-          "Password": pw
+        "Name": name,  
+        "Username": uid,
+          "Password": pw,
+          "Notes": notes
         });
 
       var signupOptions = {
