@@ -112,9 +112,9 @@
                     exercise: exercise,
                     caloriesBurned: caloriesBurned
                 };
-                const dailyLog = JSON.parse(localStorage.getItem("dailyLog")) || [];
-                dailyLog.push(entry);
-                localStorage.setItem("dailyLog", JSON.stringify(dailyLog));
+                const weeklyLog = JSON.parse(localStorage.getItem("weeklyLog")) || [];
+                weeklyLog.push(entry);
+                localStorage.setItem("weeklyLog", JSON.stringify(weeklyLog));
                 
                 // Clear input fields
                 document.getElementById("day").value = "";
@@ -122,17 +122,17 @@
                 document.getElementById("weight").value = "";
                 document.getElementById("exercise").value = "";
                 document.getElementById("calories-burned").value = "";
-                displaydailyLog();
+                displayweeklyLog();
                 alert("Entry logged successfully!");
    //          else {
    //             alert("Please fill in all fields.");
             }}
         
-        function displaydailyLog() {
-            const dailyLog = JSON.parse(localStorage.getItem("dailyLog")) || [];
+        function displaydweeklyLog() {
+            const weeklyLog = JSON.parse(localStorage.getItem("weeklyLog")) || [];
             const tableBody = document.getElementById("log-body");
-            tableBody.innerHTML = ""; // Clear previous entries
-            dailyLog.forEach(entry => {
+            tableBody.innerHTML = ""; 
+            weeklyLog.forEach(entry => {
                 const row = tableBody.insertRow();
                 row.insertCell().textContent = entry.day;
                 row.insertCell().textContent = entry.date;
@@ -141,7 +141,7 @@
                 row.insertCell().textContent = entry.caloriesBurned;
             });
         }
-        displaydailyLog();
+        displayweeklyLog();
     </script>
 </body>
 </html>
