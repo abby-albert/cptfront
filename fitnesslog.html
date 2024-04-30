@@ -67,7 +67,7 @@
         <h1>Date</h1>
         <input type="text" id="date" placeholder="Enter the date" required>
         <h1>Laps</h1>
-        <input type="number" id="laps" placeholder="Enter laps run on track" required>
+        <input type="integer" id="laps" placeholder="Enter integer number of laps run on track" required>
         <h1>Time</h1>
         <input type="number" id="time" placeholder="Enter time in minutes" required>
         <br><br>
@@ -104,10 +104,14 @@
            
            
 function pacecalculator(a, b){
-    var loopcount = b;
+    var loopcount = 0;
 
     if (b > 1 ) {
-        loopcount = b;
+        while(loopcount<b)
+            {
+                loopcount++;
+            }
+    
     } else {
         loopcount = 1;
     }
