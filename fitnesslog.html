@@ -95,30 +95,30 @@
     </div>
   
    <script>
-        // JavaScript to save log entries to local storage and display weekly log
+        // JavaScript to save log entries to local storage and display running log
+       
+        function pacecalculator(a, b){
+             var loopcount = 0;
+
+            if (b > 1 ) {
+              while(loopcount<b)
+                 {
+                loopcount++;
+                  }
+    
+              } else {
+                loopcount = 1;
+             }
+ 
+            return ((a / (loopcount * 0.25)))  
+        }
+       
+    
         document.getElementById("save-button").addEventListener("click", function () {
             const day = document.getElementById("day").value;
             const date = document.getElementById("date").value;
             const laps = document.getElementById("laps").value;
             const time = document.getElementById("time").value;
-           
-           
-function pacecalculator(a, b){
-    var loopcount = 0;
-
-    if (b > 1 ) {
-        while(loopcount<b)
-            {
-                loopcount++;
-            }
-    
-    } else {
-        loopcount = 1;
-    }
- 
-    return ((a / (loopcount * 0.25)))  
-    }
-
             const pace = pacecalculator(time, laps);
            
            
