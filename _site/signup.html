@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fitness Planner</title>
+    <title>Signup</title>
     <style>
         body {
             background: linear-gradient(135deg, #ff85a2, #ff007f);
@@ -138,7 +138,7 @@
           redirect: 'follow'
         };
 
-      fetch("http://127.0.0.1:8086/api/signup/log", signupOptions)
+      fetch("http://127.0.0.1:8086/api/model/signups/log", signupOptions)
  
           .then(response => {
             if (response.ok) {
@@ -158,14 +158,14 @@
 
     //return response
   }
-  
-  
+ 
+  {
   <script>
         // JavaScript to save log entries to local storage and display weekly log
-        document.getElementById("save-button").addEventListener("click", function () {
+      document.getElementById("save-button").addEventListener("click", function () {
             const name = document.getElementById("name").value;
-            const Username = document.getElementById("Username").value;
-            const Password = document.getElementById("Password").value;
+           const Username = document.getElementById("Username").value;
+           const Password = document.getElementById("Password").value;
             const Notes = document.getElementById("Notes").value;
             const currentDate = new Date().toLocaleDateString();
             if (name !== "" && Username !== "" && Password !== "" && Notes !== "") {
@@ -175,8 +175,8 @@
                     Password: Password,
                     Notes: Notes,
                 };
-                const UserLog = JSON.parse(localStorage.getItem("UserLog")) || [];
-                UserLog.push(entry);
+               const UserLog = JSON.parse(localStorage.getItem("UserLog")) || [];
+               UserLog.push(entry);
                 localStorage.setItem("UserLog", JSON.stringify(UserLog));
                 
                 // Clear input fields
