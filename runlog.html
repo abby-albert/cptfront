@@ -98,9 +98,9 @@
     <script>
         // JavaScript to save log entries to local storage and display weekly log
         document.getElementById("save-button").addEventListener("click", function () {
-            const name = document.getElementById("day").value;
-            const food = document.getElementById("date").value;
-            const calories = document.getElementById("weight").value;
+            const day = document.getElementById("day").value;
+            const date = document.getElementById("date").value;
+            const weight = document.getElementById("weight").value;
             const exercise = document.getElementById("exercise").value;
             const caloriesBurned = document.getElementById("calories-burned").value;
             const currentDate = new Date().toLocaleDateString();
@@ -124,8 +124,8 @@
                 document.getElementById("calories-burned").value = "";
                 displayWeeklyLog();
                 alert("Entry logged successfully!");
-             else {
-                alert("Please fill in all fields.");
+   //          else {
+   //             alert("Please fill in all fields.");
             }
         
         function displaydailyLog() {
