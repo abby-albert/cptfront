@@ -92,7 +92,69 @@
             </div>
         </div>
     </div>
-    <script>
+  
+  
+  
+
+  <script>
+    function signup_user() {
+      const inputeduid = document.getElementById("Username").value;
+      const inputedPassword = document.getElementById("Password").value;
+      console.log("Username = " + inputeduid)
+      console.log("Password = " + inputedPassword)
+      const signupHeaders = new Headers();
+      signupHeaders.set('111', '222');
+      signupHeaders.set("Accept", "*/*");
+      signupHeaders.set("Accept-Language", "en-US,en;q=0.9");
+      signupHeaders.set("Content-Type", "application/json");
+
+      signup_api(inputeduid,inputedPassword)
+
+      }
+
+    function signup_api(uid, pw){
+      var myHeaders = new Headers();
+      myHeaders.append("Accept", "*/*");
+      myHeaders.append("Accept-Language", "en-US,en;q=0.9");
+      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("Cookie", "jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJfdWlkIjoidG9ueSJ9.jEShka0oXI1-uCuSTfo3ed5WRw3ASLNV0Tpn1kc5GB0");
+
+
+      var raw = JSON.stringify({
+          "Username": uid,
+          "Password": pw
+        });
+
+      var signupOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          body: raw,
+          redirect: 'follow'
+        };
+
+      fetch("http://127.0.0.1:8086/api/signup/log", signupOptions)
+ 
+          .then(response => {
+            if (response.ok) {
+              console.log("User logged in successfully");
+             window.location.href = "http://127.0.0.1:4100/2048elements.html"
+           } else {
+              console.error("User login failed");
+                const errornote = document.getElementById('error');
+                errornote.innerHTML = '<label style="color: red;">User Login Failed</label>';
+              }
+        })
+      .then(result => { 
+          console.log(result);
+
+      })
+         .catch(error => console.log('error', error));
+
+    //return response
+  }
+  
+  
+  <script>
         // JavaScript to save log entries to local storage and display weekly log
         document.getElementById("save-button").addEventListener("click", function () {
             const name = document.getElementById("name").value;
