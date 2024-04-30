@@ -83,7 +83,7 @@
                             <th>Date</th>
                             <th>Miles</th>
                             <th>Time</th>
-                            <th>Pace</th>
+                            <th>Pace (min/mile)</th>
                         </tr>
                     </thead>
                     <tbody id="log-body">
@@ -100,7 +100,7 @@
             const date = document.getElementById("date").value;
             const miles = document.getElementById("miles").value;
             const time = document.getElementById("time").value;
-            const pace = miles / time;
+            const pace = time / miles;
             const currentDate = new Date().toLocaleDateString();
             if (day !== "" && date !== "" && miles !== "" && time !== "") {
                 const entry = {
