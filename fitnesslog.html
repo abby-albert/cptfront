@@ -70,8 +70,6 @@
         <input type="number" id="miles" placeholder="Enter miles run" required>
         <h1>Time</h1>
         <input type="number" id="time" placeholder="Enter time in minutes" required>
-        <h1>Calories Burned</h1>
-        <input type="number" id="calories-burned" placeholder="Enter # of Calories Burned" required>
         <br><br>
         <button id="save-button">Log Entry</button>
         <!-- Weekly Planner Display -->
@@ -85,7 +83,7 @@
                             <th>Date</th>
                             <th>Miles</th>
                             <th>Time</th>
-                            <th>Calories Burned</th>
+                            <th>Pace</th>
                         </tr>
                     </thead>
                     <tbody id="log-body">
@@ -102,15 +100,15 @@
             const date = document.getElementById("date").value;
             const miles = document.getElementById("miles").value;
             const time = document.getElementById("time").value;
-            const caloriesBurned = document.getElementById("calories-burned").value;
+            const pace = mile / time;
             const currentDate = new Date().toLocaleDateString();
-            if (day !== "" && date !== "" && miles !== "" && time !== "" && caloriesBurned !== "") {
+            if (day !== "" && date !== "" && miles !== "" && time !== "" && pace !== "") {
                 const entry = {
                     day: day,
                     date: date,
                     miles: miles,
                     time: time,
-                    caloriesBurned: caloriesBurned
+                    pace: pace
                 };
                 const weeklyLog = JSON.parse(localStorage.getItem("weeklyLog")) || [];
                 weeklyLog.push(entry);
@@ -121,7 +119,7 @@
                 document.getElementById("date").value = "";
                 document.getElementById("miles").value = "";
                 document.getElementById("time").value = "";
-                document.getElementById("calories-burned").value = "";
+                
                 displayWeeklyLog();
                 alert("Entry logged successfully!");
             } else {
@@ -139,7 +137,7 @@
                 row.insertCell().textContent = entry.date;
                 row.insertCell().textContent = entry.miles;
                 row.insertCell().textContent = entry.time;
-                row.insertCell().textContent = entry.caloriesBurned;
+                row.insertCell().textContent = entry.pace;
             });
         }
         displayWeeklyLog();
