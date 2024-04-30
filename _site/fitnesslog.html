@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Running Log</title>
+    <title>Track Running Log</title>
     <style>
         body {
             background: linear-gradient(135deg, #ff85a2, #ff007f);
@@ -66,8 +66,8 @@
         <input type="text" id="day" placeholder="Enter the day" required>
         <h1>Date</h1>
         <input type="text" id="date" placeholder="Enter the date" required>
-        <h1>Miles</h1>
-        <input type="number" id="miles" placeholder="Enter miles run" required>
+        <h1>Laps</h1>
+        <input type="number" id="laps" placeholder="Enter laps run on track" required>
         <h1>Time</h1>
         <input type="number" id="time" placeholder="Enter time in minutes" required>
         <br><br>
@@ -81,7 +81,7 @@
                         <tr>
                             <th>Day</th>
                             <th>Date</th>
-                            <th>Miles</th>
+                            <th>Laps</th>
                             <th>Time</th>
                             <th>Pace (min/mile)</th>
                         </tr>
@@ -93,27 +93,40 @@
             </div>
         </div>
     </div>
-    <script>
+  
+   <script>
         // JavaScript to save log entries to local storage and display weekly log
         document.getElementById("save-button").addEventListener("click", function () {
             const day = document.getElementById("day").value;
             const date = document.getElementById("date").value;
-            const miles = document.getElementById("miles").value;
+            const laps = document.getElementById("laps").value;
             const time = document.getElementById("time").value;
            
            
 function pacecalculator(a, b){
-return a / b
-}
+    var loopcount = 0
 
-            const pace = pacecalculator(time, miles);
+    if (b > 1 ) {
+        while (loopcount<b)
+        {
+            loopcount++
+        }
+    }
+    elseif (b=1); {
+        loopcount = 1
+        }
+
+    return (a / b) * 0.25  
+    }
+
+            const pace = pacecalculator(time, laps);
            
            
-            if (day !== "" && date !== "" && miles !== "" && time !== "") {
+            if (day !== "" && date !== "" && laps !== "" && time !== "") {
                 const entry = {
                     day: day,
                     date: date,
-                    miles: miles,
+                    laps: laps,
                     time: time,
                     pace: pace
                 };
@@ -124,7 +137,7 @@ return a / b
                 // Clear input fields
                 document.getElementById("day").value = "";
                 document.getElementById("date").value = "";
-                document.getElementById("miles").value = "";
+                document.getElementById("laps").value = "";
                 document.getElementById("time").value = "";
                 
                 displayWeeklyLog();
@@ -144,7 +157,7 @@ return a / b
                 const row = tableBody.insertRow();
                 row.insertCell().textContent = entry.day;
                 row.insertCell().textContent = entry.date;
-                row.insertCell().textContent = entry.miles;
+                row.insertCell().textContent = entry.laps;
                 row.insertCell().textContent = entry.time;
                 row.insertCell().textContent = entry.pace;
             });
