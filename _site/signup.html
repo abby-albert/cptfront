@@ -112,7 +112,7 @@
         });
         function displayUserLog() {
             const UserLog = JSON.parse(localStorage.getItem("UserLog")) || [];
-            const tableBody = document.getElementById("log-User");
+            const tableBody = document.getElementById("UserLog");
             tableBody.innerHTML = ""; // Clear previous entries
             UserLog.forEach(entry => {
                 const row = tableBody.insertRow();
