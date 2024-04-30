@@ -106,8 +106,13 @@
 function pacecalculator(a, b){
     var loopcount = b;
 
- //   if (b > 1 ) {
- //       while (loopcount<b)
+    if (b > 1 ) {
+        loopcount = b;
+    } else {
+        loopcount = 1;
+    }
+ 
+        //       while (loopcount<b)
  //       {
  //           loopcount++
  //       }
