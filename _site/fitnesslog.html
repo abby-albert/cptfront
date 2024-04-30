@@ -74,7 +74,7 @@
         <button id="save-button">Log Entry</button>
         <!-- Weekly Planner Display -->
         <div id="weekly-planner">
-            <h2>Planner</h2>
+            <h2>Running Log</h2>
             <div id="weekly-log">
                 <table>
                     <thead>
@@ -100,7 +100,6 @@
             const date = document.getElementById("date").value;
             const miles = document.getElementById("miles").value;
             const time = document.getElementById("time").value;
-            const pace = time / miles;
             const currentDate = new Date().toLocaleDateString();
             if (day !== "" && date !== "" && miles !== "" && time !== "") {
                 const entry = {
@@ -127,6 +126,8 @@
             }
         });
         
+        const pace = time / miles;
+
         function displayWeeklyLog() {
             const weeklyLog = JSON.parse(localStorage.getItem("weeklyLog")) || [];
             const tableBody = document.getElementById("log-body");
