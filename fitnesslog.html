@@ -100,7 +100,11 @@
             const date = document.getElementById("date").value;
             const miles = document.getElementById("miles").value;
             const time = document.getElementById("time").value;
-            const currentDate = new Date().toLocaleDateString();
+           
+           
+            const pace = time / miles;
+           
+           
             if (day !== "" && date !== "" && miles !== "" && time !== "") {
                 const entry = {
                     day: day,
@@ -126,7 +130,7 @@
             }
         });
         
-        const pace = time / miles;
+   
 
         function displayWeeklyLog() {
             const weeklyLog = JSON.parse(localStorage.getItem("weeklyLog")) || [];
