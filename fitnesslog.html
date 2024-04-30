@@ -106,7 +106,7 @@
 function pacecalculator(a, b){
     var loopcount = b;
 
-    if (b > 1 ) {
+    if (b > 1 ) {ß
         loopcount = b;
     } else {
         loopcount = 1;
@@ -121,7 +121,7 @@ function pacecalculator(a, b){
  //       loopcount = 1
   //      }
 
-    return ((a / loopcount) * 0.25)  
+    return ((a / (loopcount * 0.25)))  
     }
 
             const pace = pacecalculator(time, laps);
