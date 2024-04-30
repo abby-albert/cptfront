@@ -120,7 +120,7 @@
             const laps = document.getElementById("laps").value;
             const time = document.getElementById("time").value;
             const pace = pacecalculator(time, laps);
-           
+
            
             if (day !== "" && date !== "" && laps !== "" && time !== "") {
                 const entry = {
@@ -152,7 +152,7 @@
         function displayWeeklyLog() {
             const weeklyLog = JSON.parse(localStorage.getItem("weeklyLog")) || [];
             const tableBody = document.getElementById("log-body");
-            tableBody.innerHTML = ""; // Clear previous entries
+            tableBody.innerHTML = ""; 
             weeklyLog.forEach(entry => {
                 const row = tableBody.insertRow();
                 row.insertCell().textContent = entry.day;
