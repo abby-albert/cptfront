@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fitness Planner</title>
+    <title>Exercise Calorie Calculator</title>
     <style>
         body {
             background: linear-gradient(135deg, #ff85a2, #ff007f);
@@ -124,10 +124,9 @@
                 document.getElementById("calories-burned").value = "";
                 displayWeeklyLog();
                 alert("Entry logged successfully!");
-            } else {
+             else {
                 alert("Please fill in all fields.");
             }
-        });
         
         function displaydailyLog() {
             const dailyLog = JSON.parse(localStorage.getItem("dailyLog")) || [];

@@ -20,7 +20,7 @@
 {"@context":"https://schema.org","@type":"WebPage","headline":"cptfront","url":"http://localhost:4100/runlog.html"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <link rel="stylesheet" href="/assets/css/style.css?v=b5679dfdc97d6df0edf86252d69ae72b1e287c98">
+    <link rel="stylesheet" href="/assets/css/style.css?v=12bbc34b8161ea4b2474f444a2973c0faf37a78b">
     <!-- start custom head snippets, customize with your own _includes/head-custom.html file -->
 
 <!-- Setup Google Analytics -->
@@ -43,7 +43,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fitness Planner</title>
+    <title>Exercise Calorie Calculator</title>
     <style>
         body {
             background: linear-gradient(135deg, #ff85a2, #ff007f);
@@ -165,10 +165,9 @@
                 document.getElementById("calories-burned").value = "";
                 displayWeeklyLog();
                 alert("Entry logged successfully!");
-            } else {
+             else {
                 alert("Please fill in all fields.");
             }
-        });
         
         function displaydailyLog() {
             const dailyLog = JSON.parse(localStorage.getItem("dailyLog")) || [];
