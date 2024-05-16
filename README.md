@@ -1,1 +1,1 @@
-i got all of my base code off of the teacher code: https://github.com/nighthawkcoders/flask_portfolio.git 
+i got all of my base code off of the teacher code: https://github.com/nighthawkcoders/flask_portfolio.git and https://github.com/nighthawkcoders/teacher_portfolio.git 

@@ -1,0 +1,168 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Spent on Homework Log</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #a9c3ef, #4555c8);
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            text-align: center;
+            padding: 50px;
+            background-color: rgb(191, 242, 251);
+            border-radius: 10px;
+            margin: 50px auto;
+            max-width: 600px;
+        }
+        h1 {
+            color: #333;
+        }
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        #save-button {
+            background-color: #8257B4;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        #weekly-log {
+            text-align: left;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+        }
+        #weekly-log table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        #weekly-log th, #weekly-log td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        .dropdown {
+            display: inline-block;
+            width: 100%;
+        }
+        .dropdown select {
+            width: 100%;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Day</h1>
+        <input type="text" id="day" placeholder="Enter the day" required>
+        <h1>Subject</h1>
+        <input type="text" id="subject" placeholder="Enter your class name" required>
+        <h1>Problems</h1>
+        <input type="number" id="problems" placeholder="Enter integer number of problems assigned" required>
+        <h1>average time per problem</h1>
+        <input type="number" id="time" placeholder="Enter time in minutes" required>
+        <br><br>
+        <button id="save-button">Log Entry</button>
+        <!-- Weekly Planner Display -->
+        <div id="weekly-planner">
+            <h2>Running Log</h2>
+            <div id="weekly-log">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>Class</th>
+                            <th>Problems</th>
+                            <th>Time</th>
+                            <th>Pace (min/mile)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="log-body">
+                        <!-- Log entries will be displayed here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+  
+   <script>
+        // JavaScript to save log entries to local storage and display running log
+       
+        function pacecalculator(a, b){
+             var loopcount = 0;
+
+            if (b > 1 ) {
+              while(loopcount<b)
+                 {
+                loopcount++;
+                  }
+    
+              } else {
+                loopcount = 1;
+             }
+ 
+            return ((a * (loopcount * 0.25)))  
+        }
+       
+    
+        document.getElementById("save-button").addEventListener("click", function () {
+            const day = document.getElementById("day").value;
+            const subject = document.getElementById("subject").value;
+            const problems = document.getElementById("problems").value;
+            const time = document.getElementById("time").value;
+            const pace = pacecalculator(time, problems);
+
+           
+            if (day !== "" && subject !== "" && problems !== "" && time !== "") {
+                const entry = {
+                    day: day,
+                    subject: subject,
+                    problems: problems,
+                    time: time,
+                    pace: pace
+                };
+                const weeklyLog = JSON.parse(localStorage.getItem("weeklyLog")) || [];
+                weeklyLog.push(entry);
+                localStorage.setItem("weeklyLog", JSON.stringify(weeklyLog));
+                
+                // Clear input fields
+                document.getElementById("day").value = "";
+                document.getElementById("subject").value = "";
+                document.getElementById("problems").value = "";
+                document.getElementById("time").value = "";
+                
+                displayWeeklyLog();
+                alert("Entry logged successfully!");
+            } else {
+                alert("Please fill in all fields.");
+            }
+        });
+        
+   
+
+        function displayWeeklyLog() {
+            const weeklyLog = JSON.parse(localStorage.getItem("weeklyLog")) || [];
+            const tableBody = document.getElementById("log-body");
+            tableBody.innerHTML = ""; 
+            weeklyLog.forEach(entry => {
+                const row = tableBody.insertRow();
+                row.insertCell().textContent = entry.day;
+                row.insertCell().textContent = entry.subject;
+                row.insertCell().textContent = entry.problems;
+                row.insertCell().textContent = entry.time;
+                row.insertCell().textContent = entry.pace;
+            });
+        }
+        displayWeeklyLog();
+    </script>
+</body>
+</html>
